@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product detail</title>
+</head>
+<body>
+<center>
+    <h1>{{ product_id.name }}</h1> <br>
+    <img src="{{ product_id.image.url }}" alt="" width="400" height="450"><br>
+    <p>Размер: {{ product_id.size }}</p>
+    <p>Цвет: {{ product_id.color }}</p>
+    <p>Цена: {{ product_id.price }} сом</p>
+    <p>Бранд: {{ product_id.brand }}</p>
+    <p>Описание: {{ product_id.description }}</p>
+    <p>Статус: {{ product_id.status }}</p>
+    <p>Дата: {{ product_id.created_at }}</p>
+   <hr><br><br>
+    <button><a href="/product_detail/{{ product_id.id }}/update/"> Редактировать </a></button>
+    <button><a href="/product_detail/{{ product_id.id }}/delete/"> Удалить </a></button>
+</center>
+<h1>Коментарии:</h1><br>
+
+{% for i in product_id.comment_object.all %}
+<h3>{{ i.text }}</h3>
+<p>{{ i.created_at }}</p>
+<br><br><br>
+{% endfor %}
+</body>
+</html>

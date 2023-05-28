@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sonun store</title>
+</head>
+<body>
+
+{% for i in sonun_store %}
+<center>
+    <h1>{{ i.name }}</h1> <br>
+    <img src="{{ i.image.url }}" alt="" width="360" height="450"><br>
+    <p>Цена: {{ i.price }} сом</p>
+    <p>Статус: {{ i.status }}</p>
+    <button><a href="/product_detail/{{i.id}}/">Узнать подробнее</a></button>
+   <hr><br><br>
+
+
+{% endfor %}
+<button><a href="/add-review/"> Добавить комментарию </a></button><hr>
+<button><a href="/add-product/">Добавить товар</a></button>
+</center>
+</body>
+</html>
