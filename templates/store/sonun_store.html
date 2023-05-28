@@ -1,24 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sonun store</title>
-</head>
-<body>
-
+{% include 'store/header.html' %}
 {% for i in sonun_store %}
-<center>
-    <h1>{{ i.name }}</h1> <br>
-    <img src="{{ i.image.url }}" alt="" width="360" height="450"><br>
-    <p>Цена: {{ i.price }} сом</p>
-    <p>Статус: {{ i.status }}</p>
-    <button><a href="/product_detail/{{i.id}}/">Узнать подробнее</a></button>
-   <hr><br><br>
-
+<div class="card" style="width: 18rem;">
+  <img src="{{ i.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ i.name }}</h5>
+    <p class="card-text">Цена: {{ i.price }} сом</p>
+    <p class="card-text">Статус: {{ i.status }}</p>
+    <a href="/product_detail/{{i.id}}/" class="btn btn-primary">Узнать подробнее</a>
+       <br><br><br>
+  </div>
+</div>
 
 {% endfor %}
-<button><a href="/add-review/"> Добавить комментарию </a></button><hr>
-<button><a href="/add-product/">Добавить товар</a></button>
-</center>
-</body>
-</html>
+<br><br>
+
+<style>
+    a{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+<button type="button" class="btn btn-outline-success"><a href="/add-review/"> Добавить комментарию </a></button>
+<button type="button" class="btn btn-outline-primary"><a href="/add-product/">Добавить товар</a></button>
+    </center>
+{% include 'store/footer.html' %}

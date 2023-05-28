@@ -1,30 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Product detail</title>
-</head>
-<body>
-<center>
-    <h1>{{ product_id.name }}</h1> <br>
-    <img src="{{ product_id.image.url }}" alt="" width="400" height="450"><br>
-    <p>Размер: {{ product_id.size }}</p>
-    <p>Цвет: {{ product_id.color }}</p>
-    <p>Цена: {{ product_id.price }} сом</p>
-    <p>Бранд: {{ product_id.brand }}</p>
-    <p>Описание: {{ product_id.description }}</p>
-    <p>Статус: {{ product_id.status }}</p>
-    <p>Дата: {{ product_id.created_at }}</p>
-   <hr><br><br>
-    <button><a href="/product_detail/{{ product_id.id }}/update/"> Редактировать </a></button>
-    <button><a href="/product_detail/{{ product_id.id }}/delete/"> Удалить </a></button>
+{% include 'store/header.html' %}
+
+<div class="card mb-3" style="max-width: 1040px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{ product_id.image.url }}" class="img-fluid rounded-start" alt="">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ product_id.name }}</h5>
+        <p class="card-text">Описание: {{ product_id.description }}</p>
+          <p class="card-text">Размер: {{ product_id.size }}</p>
+          <p class="card-text">Цвет: {{ product_id.color }}</p>
+          <p class="card-text">Бранд: {{ product_id.brand }}</p>
+          <p class="card-text">Статус: {{ product_id.status }}</p>
+        <p class="card-text"><small class="text-body-secondary">Дата: {{ product_id.created_at }}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    a{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+<button type="button" class="btn btn-outline-warning"><a href="/product_detail/{{ product_id.id }}/update/"> Редактировать </a></button>
+<button type="button" class="btn btn-outline-danger"><a href="/product_detail/{{ product_id.id }}/delete/"> Удалить </a></button>
 </center>
+<hr><br><br>
+
 <h1>Коментарии:</h1><br>
 
 {% for i in product_id.comment_object.all %}
-<h3>{{ i.text }}</h3>
-<p>{{ i.created_at }}</p>
-<br><br><br>
+
+<div class="list-group">
+  <a class="list-group-item list-group-item-action active" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+
+      <h5 class="mb-1">{{ i.text }}</h5>
+      <small>{{ i.created_at }}</small>
+    </div>
+  </a>
+</div>
+<br>
 {% endfor %}
-</body>
-</html>
+
+{% include 'store/footer.html' %}
