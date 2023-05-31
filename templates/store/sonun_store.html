@@ -1,5 +1,7 @@
 {% include 'store/header.html' %}
-{% for i in sonun_store %}
+
+
+{% for i in object_list %}
 <div class="card" style="width: 18rem;">
   <img src="{{ i.image.url }}" class="card-img-top" alt="...">
   <div class="card-body">
@@ -23,5 +25,7 @@
 
 <button type="button" class="btn btn-outline-success"><a href="/add-review/"> Добавить комментарию </a></button>
 <button type="button" class="btn btn-outline-primary"><a href="/add-product/">Добавить товар</a></button>
-    </center>
+</center>
+
+
 {% include 'store/footer.html' %}

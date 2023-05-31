@@ -1,58 +1,91 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from . import models, forms
+from django.views import generic
 
 
-def sonun_view(request):
-    return HttpResponse('Salam')
+class SonunStoreView(generic.ListView):
+    template_name = 'store/sonun_store.html'
+    queryset = models.Sonun_Store.objects.all()
+
+    def get_queryset(self):
+        return models.Sonun_Store.objects.all()
 
 
-def sonun_store_view(request):
-    sonun_store = models.Sonun_Store.objects.all()
-    return render(request, 'store/sonun_store.html', {'sonun_store': sonun_store})
+class ProductDetailView(generic.DetailView):
+    template_name = 'store/product_detail.html'
 
-def product_detail_view(request, id):
-    product_id = get_object_or_404(models.Sonun_Store, id=id)
-    return render(request, 'store/product_detail.html', {'product_id': product_id})
+    def get_object(self, **kwargs):
+        product_id = self.kwargs.get('id')
+        return get_object_or_404(models.Sonun_Store, id=product_id)
 
-def create_product_view(request):
-    method = request.method
-    if method == 'POST':
-        form = forms.StoreForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return HttpResponse('Продукт добавлен')
 
-    else:
-        form = forms.StoreForm()
-    return render(request, 'crud/create_product.html', {'form': form})
+class CreateProductView(generic.CreateView):
+    template_name = 'crud/create_product.html'
+    form_class = forms.StoreForm
+    queryset = models.Sonun_Store.objects.all()
+    success_url = '/'
 
-def delete_product_view(request, id):
-    product_id = get_object_or_404(models.Sonun_Store, id=id)
-    product_id.delete()
-    return HttpResponse('Продукт удален')
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super(CreateProductView, self).form_valid(form=form)
 
-def update_product_view(request, id):
-    product_id = get_object_or_404(models.Sonun_Store, id=id)
-    if request.method == 'POST':
-        form = forms.StoreForm(instance=product_id, data=request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponse('Продукт обновлен')
 
-    else:
-        form = forms.StoreForm(instance=product_id)
+class DeleteProductview(generic.DeleteView):
+    template_name = 'crud/confirm_delete.html'
+    success_url = '/'
 
-    return render(request, 'crud/update_product.html', {'form': form, 'product_id': product_id})
+    def get_object(self, **kwargs):
+        product_id = self.kwargs.get('id')
+        return get_object_or_404(models.Sonun_Store, id=product_id)
 
-def review_product_view(request):
-    method = request.method
-    if method == 'POST':
-        form_review = forms.ReviewForm(request.POST, request.FILES)
-        if form_review.is_valid():
-            form_review.save()
-            return HttpResponse('Коментария добавлен')
 
-    else:
-        form_review = forms.ReviewForm()
-    return render(request, 'reviews_product.html', {'form_review': form_review})
+class UpdateProductView(generic.UpdateView):
+    template_name = 'crud/update_product.html'
+    form_class = forms.StoreForm
+    success_url = '/'
+
+    def get_object(self, **kwargs):
+        product_id = self.kwargs.get('id')
+        return get_object_or_404(models.Sonun_Store, id= product_id)
+
+    def form_valid(self, form):
+        return super(UpdateProductView, self).form_valid(form=form)
+
+
+
+class ReviewProductView(generic.CreateView):
+    template_name = 'reviews_product.html'
+    form_class = forms.ReviewForm
+    queryset = models.Reviews.objects.all()
+    success_url = '/'
+
+    def form_valid(self, form_review):
+        print(form_review.cleaned_data)
+        return super(ReviewProductView, self).form_valid(form=form_review)
+
+# def review_product_view(request):
+#     method = request.method
+#     if method == 'POST':
+#         form_review = forms.ReviewForm(request.POST, request.FILES)
+#         if form_review.is_valid():
+#             form_review.save()
+#             return HttpResponse('Коментария добавлен')
+#
+#     else:
+#         form_review = forms.ReviewForm()
+#     return render(request, 'reviews_product.html', {'form_review': form_review})
+
+
+class Search(generic.ListView):
+    template_name = 'store/sonun_store.html'
+    context_object_name = 'product'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return models.Sonun_Store.objects.filter(name__icontains=self.request.GET.get('q'))
+
+    def get_context_data(self, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['q'] = self.request.GET.get('q')
+        return context

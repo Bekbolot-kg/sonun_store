@@ -3,17 +3,17 @@
 <div class="card mb-3" style="max-width: 1040px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{ product_id.image.url }}" class="img-fluid rounded-start" alt="">
+      <img src="{{ object.image.url }}" class="img-fluid rounded-start" alt="">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ product_id.name }}</h5>
-        <p class="card-text">Описание: {{ product_id.description }}</p>
-          <p class="card-text">Размер: {{ product_id.size }}</p>
-          <p class="card-text">Цвет: {{ product_id.color }}</p>
-          <p class="card-text">Бранд: {{ product_id.brand }}</p>
-          <p class="card-text">Статус: {{ product_id.status }}</p>
-        <p class="card-text"><small class="text-body-secondary">Дата: {{ product_id.created_at }}</small></p>
+        <h5 class="card-title">{{ object.name }}</h5>
+        <p class="card-text">Описание: {{ object.description }}</p>
+          <p class="card-text">Размер: {{ object.size }}</p>
+          <p class="card-text">Цвет: {{ object.color }}</p>
+          <p class="card-text">Бранд: {{ object.brand }}</p>
+          <p class="card-text">Статус: {{ object.status }}</p>
+        <p class="card-text"><small class="text-body-secondary">Дата: {{ object.created_at }}</small></p>
       </div>
     </div>
   </div>
@@ -26,14 +26,14 @@
     }
 </style>
 
-<button type="button" class="btn btn-outline-warning"><a href="/product_detail/{{ product_id.id }}/update/"> Редактировать </a></button>
-<button type="button" class="btn btn-outline-danger"><a href="/product_detail/{{ product_id.id }}/delete/"> Удалить </a></button>
+<button type="button" class="btn btn-outline-warning"><a href="/product_detail/{{ object.id }}/update/"> Редактировать </a></button>
+<button type="button" class="btn btn-outline-danger"><a href="/product_detail/{{ object.id }}/delete/"> Удалить </a></button>
 </center>
 <hr><br><br>
 
 <h1>Коментарии:</h1><br>
 
-{% for i in product_id.comment_object.all %}
+{% for i in object.comment_object.all %}
 
 <div class="list-group">
   <a class="list-group-item list-group-item-action active" aria-current="true">

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm delete</title>
+</head>
+<body>
+,.<h1> Вы уверены что хотите удалить анкету? </h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button type="submit">Да</button>
+</form>
+<button><a href="/">Нет</a></button>
+</body>
+</html>
