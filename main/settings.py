@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sonun_store',
-    'parser_app'
+    'parser_app',
+    'custom_users',
 ]
 
 MIDDLEWARE = [
