@@ -26,11 +26,11 @@ def get_data(html):
     for item in items:
         netco_elektronika.append(
             {
-                "title_url": URL + item.find("div", class_="static").find("a").get("data-url"),
+                "title_url": URL
+                + item.find("div", class_="static").find("a").get("data-url"),
                 "title_text": item.find(class_="name").get_text(),
                 "image": URL + item.find("img").get("src"),
-                "price": item.find('div', class_='price').get_text(),
-
+                "price": item.find("div", class_="price").get_text(),
             }
         )
 
@@ -43,7 +43,9 @@ def parser():
     if html.status_code == 200:
         netco_elektronika1 = []
         for page in range(0, 1):
-            html = get_html(f"https://netco.kg/catalog/mobilnye_telefony_i_aksessuary/", params=page)
+            html = get_html(
+                f"https://netco.kg/catalog/mobilnye_telefony_i_aksessuary/", params=page
+            )
             netco_elektronika1.extend(get_data(html.text))
         return netco_elektronika1
         # print(f'\n{netco_elektronika1}\n')

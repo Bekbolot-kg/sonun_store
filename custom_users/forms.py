@@ -3,21 +3,17 @@ from django.contrib.auth.forms import UserCreationForm
 from . import models
 
 
-GENDER = (
-    ('M', 'M'),
-    ('Ж', 'Ж'),
-    ('Другой', 'Другой')
-)
+GENDER = (("M", "M"), ("Ж", "Ж"), ("Другой", "Другой"))
 
 LANGUAGE = (
-    ('Кыргызча', 'Кыргызча'),
-    ('Русский', 'Русский'),
-    ('English', 'English'),
+    ("Кыргызча", "Кыргызча"),
+    ("Русский", "Русский"),
+    ("English", "English"),
 )
 COUNTY = (
-    ('Кыргызстан', 'Кыргызстан'),
-    ('Россия', 'Россия'),
-    ('Казахстан', 'Казахстан'),
+    ("Кыргызстан", "Кыргызстан"),
+    ("Россия", "Россия"),
+    ("Казахстан", "Казахстан"),
 )
 
 
@@ -33,25 +29,25 @@ class CustomRegistrationForm(UserCreationForm):
 
     class Meta:
         model = models.CustomUser
-        fields =(
-            'username',
-            'password1',
-            'password2',
-            'email',
-            'first_name',
-            'last_name',
-            'phone_number',
-            'age',
-            'gender',
-            'avatar',
-            'language',
-            'about_me',
-            'country'
+        fields = (
+            "username",
+            "password1",
+            "password2",
+            "email",
+            "first_name",
+            "last_name",
+            "phone_number",
+            "age",
+            "gender",
+            "avatar",
+            "language",
+            "about_me",
+            "country",
         )
 
     def save(self, commit=True):
         user = super(CustomRegistrationForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
+        user.email = self.cleaned_data["email"]
         if commit:
             user.save()
         return user

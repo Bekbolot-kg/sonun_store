@@ -4,24 +4,31 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('parser_app', '0002_tvparser_price_alter_tvparser_title_url'),
+        ("parser_app", "0002_tvparser_price_alter_tvparser_title_url"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='PrParser',
+            name="PrParser",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title_url', models.CharField(max_length=200, null=True)),
-                ('title_text', models.CharField(max_length=100, null=True)),
-                ('price', models.CharField(max_length=20, null=True)),
-                ('image', models.ImageField(null=True, upload_to='')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title_url", models.CharField(max_length=200, null=True)),
+                ("title_text", models.CharField(max_length=100, null=True)),
+                ("price", models.CharField(max_length=20, null=True)),
+                ("image", models.ImageField(null=True, upload_to="")),
             ],
         ),
         migrations.RemoveField(
-            model_name='tvparser',
-            name='price',
+            model_name="tvparser",
+            name="price",
         ),
     ]

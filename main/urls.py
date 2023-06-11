@@ -4,10 +4,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('sonun_store.urls')),
-    path('', include('parser_app.urls')),
-    path('', include('custom_users.urls')),
-]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\
-              +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = (
+    [
+        path("admin/", admin.site.urls),
+        path("", include("sonun_store.urls")),
+        path("", include("parser_app.urls")),
+        path("", include("custom_users.urls")),
+        path("", include("product.urls")),
+        path("", include("cloth.urls")),
+    ]
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)

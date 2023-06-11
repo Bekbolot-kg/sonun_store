@@ -5,24 +5,38 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('sonun_store', '0003_alter_sonun_store_size'),
+        ("sonun_store", "0003_alter_sonun_store_size"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='sonun_store',
-            name='created_at',
+            model_name="sonun_store",
+            name="created_at",
             field=models.DateTimeField(auto_now_add=True, null=True),
         ),
         migrations.CreateModel(
-            name='Reviews',
+            name="Reviews",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', models.TextField(verbose_name='Ваш отзыв')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('name_reviews', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='commit_object', to='sonun_store.sonun_store')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("description", models.TextField(verbose_name="Ваш отзыв")),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "name_reviews",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="commit_object",
+                        to="sonun_store.sonun_store",
+                    ),
+                ),
             ],
         ),
     ]

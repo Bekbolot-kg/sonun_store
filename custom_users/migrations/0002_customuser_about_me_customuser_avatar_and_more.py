@@ -4,35 +4,56 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('custom_users', '0001_initial'),
+        ("custom_users", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='customuser',
-            name='about_me',
+            model_name="customuser",
+            name="about_me",
             field=models.CharField(blank=True, max_length=1000, null=True),
         ),
         migrations.AddField(
-            model_name='customuser',
-            name='avatar',
-            field=models.ImageField(null=True, upload_to=''),
+            model_name="customuser",
+            name="avatar",
+            field=models.ImageField(null=True, upload_to=""),
         ),
         migrations.AddField(
-            model_name='customuser',
-            name='country',
-            field=models.CharField(blank=True, choices=[('Кыргызстан', 'Кыргызстан'), ('Россия', 'Россия'), ('Казахстан', 'Казахстан')], max_length=50, null=True),
+            model_name="customuser",
+            name="country",
+            field=models.CharField(
+                blank=True,
+                choices=[
+                    ("Кыргызстан", "Кыргызстан"),
+                    ("Россия", "Россия"),
+                    ("Казахстан", "Казахстан"),
+                ],
+                max_length=50,
+                null=True,
+            ),
         ),
         migrations.AddField(
-            model_name='customuser',
-            name='language',
-            field=models.CharField(choices=[('Кыргызча', 'Кыргызча'), ('Русский', 'Русский'), ('English', 'English')], max_length=50, null=True),
+            model_name="customuser",
+            name="language",
+            field=models.CharField(
+                choices=[
+                    ("Кыргызча", "Кыргызча"),
+                    ("Русский", "Русский"),
+                    ("English", "English"),
+                ],
+                max_length=50,
+                null=True,
+            ),
         ),
         migrations.AlterField(
-            model_name='customuser',
-            name='gender',
-            field=models.CharField(blank=True, choices=[('M', 'M'), ('Ж', 'Ж'), ('Другой', 'Другой')], max_length=100, null=True),
+            model_name="customuser",
+            name="gender",
+            field=models.CharField(
+                blank=True,
+                choices=[("M", "M"), ("Ж", "Ж"), ("Другой", "Другой")],
+                max_length=100,
+                null=True,
+            ),
         ),
     ]

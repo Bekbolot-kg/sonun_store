@@ -4,15 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('sonun_store', '0002_remove_sonun_store_created_at_sonun_store_brand_and_more'),
+        (
+            "sonun_store",
+            "0002_remove_sonun_store_created_at_sonun_store_brand_and_more",
+        ),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='sonun_store',
-            name='size',
-            field=models.CharField(blank=True, max_length=100, null=True, verbose_name='Размер'),
+            model_name="sonun_store",
+            name="size",
+            field=models.CharField(
+                blank=True, max_length=100, null=True, verbose_name="Размер"
+            ),
         ),
     ]

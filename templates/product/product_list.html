@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+</head>
+<body>
+<center>
+<h1>Список товаров</h1><br><br>
+
+    {% for i in object_list %}
+
+        <h1>{{ i.name }}</h1>
+        <button><a href="/product_det/{{i.id}}/">Детально</a></button>
+
+    {% endfor %}
+
+</center>
+</body>
+</html>

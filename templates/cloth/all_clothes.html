@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+</head>
+<body>
+<center>
+<h1>Список товаров</h1><br><br>
+
+    {% for i in products %}
+
+    <h1>{{ i.name }}</h1>
+    <img src="{{i.image.url}}" height="200" >
+    <h2>Цена: {{i.price}}</h2>
+    <h2>Размер: {{i.size}}</h2>
+    <h3>{{i.created_at}}</h3>
+    <br><br><hr>
+    {% endfor %}
+
+</center>
+</body>
+</html>

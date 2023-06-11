@@ -5,24 +5,27 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('sonun_store', '0004_sonun_store_created_at_reviews'),
+        ("sonun_store", "0004_sonun_store_created_at_reviews"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='reviews',
-            name='description',
+            model_name="reviews",
+            name="description",
         ),
         migrations.AddField(
-            model_name='reviews',
-            name='text',
-            field=models.TextField(null=True, verbose_name='Ваш отзыв'),
+            model_name="reviews",
+            name="text",
+            field=models.TextField(null=True, verbose_name="Ваш отзыв"),
         ),
         migrations.AlterField(
-            model_name='reviews',
-            name='name_reviews',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comment_object', to='sonun_store.sonun_store'),
+            model_name="reviews",
+            name="name_reviews",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="comment_object",
+                to="sonun_store.sonun_store",
+            ),
         ),
     ]

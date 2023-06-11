@@ -4,54 +4,75 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('sonun_store', '0001_initial'),
+        ("sonun_store", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='sonun_store',
-            name='created_at',
+            model_name="sonun_store",
+            name="created_at",
         ),
         migrations.AddField(
-            model_name='sonun_store',
-            name='brand',
-            field=models.CharField(blank=True, max_length=100, null=True, verbose_name='Бранд'),
+            model_name="sonun_store",
+            name="brand",
+            field=models.CharField(
+                blank=True, max_length=100, null=True, verbose_name="Бранд"
+            ),
         ),
         migrations.AddField(
-            model_name='sonun_store',
-            name='color',
-            field=models.CharField(choices=[('Белый', 'Белый'), ('Черный', 'Черный'), ('Красный', 'Красный'), ('Зеленый', 'Зеленый'), ('Коричневый', 'Коричневый'), ('Желтый', 'Желтый'), ('Розовый', 'Розовый'), ('Синий', 'Синий'), ('Другое', 'Другое')], max_length=20, null=True, verbose_name='Цвет'),
+            model_name="sonun_store",
+            name="color",
+            field=models.CharField(
+                choices=[
+                    ("Белый", "Белый"),
+                    ("Черный", "Черный"),
+                    ("Красный", "Красный"),
+                    ("Зеленый", "Зеленый"),
+                    ("Коричневый", "Коричневый"),
+                    ("Желтый", "Желтый"),
+                    ("Розовый", "Розовый"),
+                    ("Синий", "Синий"),
+                    ("Другое", "Другое"),
+                ],
+                max_length=20,
+                null=True,
+                verbose_name="Цвет",
+            ),
         ),
         migrations.AddField(
-            model_name='sonun_store',
-            name='price',
-            field=models.CharField(max_length=8, null=True, verbose_name='Цена'),
+            model_name="sonun_store",
+            name="price",
+            field=models.CharField(max_length=8, null=True, verbose_name="Цена"),
         ),
         migrations.AddField(
-            model_name='sonun_store',
-            name='size',
-            field=models.CharField(max_length=100, null=True, verbose_name='Размер'),
+            model_name="sonun_store",
+            name="size",
+            field=models.CharField(max_length=100, null=True, verbose_name="Размер"),
         ),
         migrations.AddField(
-            model_name='sonun_store',
-            name='status',
-            field=models.CharField(choices=[('В наличии', 'В наличии'), ('Распродано', 'Распродано')], max_length=20, null=True, verbose_name='Статус'),
+            model_name="sonun_store",
+            name="status",
+            field=models.CharField(
+                choices=[("В наличии", "В наличии"), ("Распродано", "Распродано")],
+                max_length=20,
+                null=True,
+                verbose_name="Статус",
+            ),
         ),
         migrations.AlterField(
-            model_name='sonun_store',
-            name='description',
-            field=models.TextField(null=True, verbose_name='Описание'),
+            model_name="sonun_store",
+            name="description",
+            field=models.TextField(null=True, verbose_name="Описание"),
         ),
         migrations.AlterField(
-            model_name='sonun_store',
-            name='image',
-            field=models.ImageField(null=True, upload_to='', verbose_name='Фото'),
+            model_name="sonun_store",
+            name="image",
+            field=models.ImageField(null=True, upload_to="", verbose_name="Фото"),
         ),
         migrations.AlterField(
-            model_name='sonun_store',
-            name='name',
-            field=models.CharField(max_length=100, null=True, verbose_name='Название'),
+            model_name="sonun_store",
+            name="name",
+            field=models.CharField(max_length=100, null=True, verbose_name="Название"),
         ),
     ]

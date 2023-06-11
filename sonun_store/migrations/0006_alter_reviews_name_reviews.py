@@ -5,15 +5,19 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('sonun_store', '0005_remove_reviews_description_reviews_text_and_more'),
+        ("sonun_store", "0005_remove_reviews_description_reviews_text_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='reviews',
-            name='name_reviews',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='comment_object', to='sonun_store.sonun_store'),
+            model_name="reviews",
+            name="name_reviews",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="comment_object",
+                to="sonun_store.sonun_store",
+            ),
         ),
     ]
